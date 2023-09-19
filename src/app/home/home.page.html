@@ -1,0 +1,316 @@
+<ion-header style="background-color: black;">
+  <ion-toolbar style="background-color: black;">
+    <ion-title>L&G</ion-title>
+  </ion-toolbar>
+</ion-header>
+<div id="divMaster" class="container" (scroll)="onContentScroll($event)">
+
+  <!-- Seccion parallax -->
+  <section class="parallax-bg" style="background-image: url('./../../assets/portada.jpg'); height: 90vh;"></section>
+  <section class="parallax-content">
+    <div>
+      <div id="countdown"></div>
+    </div>
+  </section>
+
+  <!-- Seccion NO parallax -->
+  <section id="padres" class="no-parallax-section bg-1"
+    style="height: 80vh;background-image: url('../../assets/fondo2.jpg'); background-size: cover;height: 90vh;">
+    <div class="no-parallax-content animate__animated "
+      [ngClass]="{animate__zoomIn:flagPadres, animate__fadeOut:!flagPadres}" style="--animate-duration: 1s;"
+      *ngIf="flagPadres">
+      <ion-label class="letrajose" style="margin-bottom: 5vh; color: rgb(255, 255, 255);">Tenemos el honor de invitarlos
+        a nuestro enlace nupcial,
+        con la bendicion de Dios y de nuestros padres:
+      </ion-label>
+
+      <br>
+      <br>
+
+      <ion-card style="margin: 1vh; width: 40%; --width:100%; "
+        style="background-color: rgba(42, 66, 45, 0.153);border: solid 2px rgb(255, 255, 255);">
+        <br>
+        <ion-card-content>
+          <br>
+
+          <ion-label class="letraPadres sizeN" style="color: rgb(255, 255, 255);">Rebeca Gutiérrez Pérez</ion-label>
+          <br>
+          <br>
+          <ion-label class="letraPadres sizeN" style="color: rgb(255, 255, 255);">Carlos Rodríguez Sandoval</ion-label>
+          <br>
+          <br>
+          <br>
+        </ion-card-content>
+      </ion-card>
+      <br>
+      <br>
+      <br>
+      <ion-card style="margin: 1vh; width: 40%; --width:100%; "
+        style="background-color: rgba(42, 66, 45, 0.153);border: solid 2px rgb(255, 255, 255);">
+        <br>
+        <ion-card-content>
+          <br>
+
+          <ion-label class="letraPadres sizeN" style="color: rgb(255, 255, 255);">Laura Rocio Gómez Cervantes
+          </ion-label>
+          <br>
+          <br>
+          <ion-label class="letraPadres sizeN" style="color: rgb(255, 255, 255);">Gerardo Alfredo Melgoza Barajas
+          </ion-label>
+          <br>
+          <br>
+          <br>
+
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </section>
+
+  <!-- Seccion parallax -->
+  <section class="parallax-bg" style="background-image: url(../../assets/cuentaRegresiva.JPG);height: ;"></section>
+  <section class="parallax-content">
+    <div>
+      <div class="sectionClock animate__animated" [ngClass]="{animate__jackInTheBox:flagCuenta}"
+        style="--animate-duration: 1s" *ngIf="flagCuenta">
+        <div class="coming-soon">
+          <div class="time-countdown">
+            <ul>
+              <li class="count-bg-one radius"><span id="days">{{day}}</span>Dias</li>
+              <li class="count-bg-two radius"><span id="hours">{{hours}}</span>Horas</li>
+              <li class="count-bg-three radius"><span id="minutes">{{minutes}}</span>Minutos</li>
+              <li class="count-bg-four radius"><span id="seconds">{{seconds}}</span>Segundos</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p></p>
+    </div>
+  </section>
+  <section class="no-parallax-section bg-1" style=" height: 140vh">
+
+    <div class="no-parallax-content"
+      style="background-image: url(../../assets/lugares.jpg) ; height: 100%; width: 100%; background-size: cover; opacity: 0.8;">
+      <br>
+      <br>
+      <br>
+      <br>
+      <br> <br>
+
+      <ion-label class="cursiva" style="color: black;font-size: xx-large; border-color: solid 2px black;">Intinerario
+      </ion-label>
+      <br>
+      <br>
+
+      <ion-card style="margin: 1vh; "
+        style="background-color: rgba(255, 255, 255, 0);border: solid 2px rgb(170, 156, 145);">
+        <ion-card-header>
+        </ion-card-header>
+        <br>
+
+
+        <ion-card-content>
+          <br>
+
+
+          <img src="../../assets/templo.gif" style="color: black;" alt="" width="101" height="77">
+          <br>
+          <ion-label style="color: rgb(0, 0, 0);">Parroquia San Juan Macías</ion-label>
+          <br>
+          <ion-label style="color: rgb(0, 0, 0);">2:00 pm</ion-label>
+          <br>
+
+          <ion-button fill="clear" style="color: rgb(0, 0, 0);" (click)="mapa('parroquia')"> <span>
+              <ion-icon name="location-outline"></ion-icon>
+            </span>Ver mapa</ion-button>
+          <br>
+          <br>
+
+        </ion-card-content>
+      </ion-card>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <ion-card style="margin: 1vh; margin-top: 10vh;"
+        style="background-color: rgba(255, 255, 255, 0);border: solid 2px rgb(170, 156, 145);">
+        <ion-card-header>
+        </ion-card-header>
+
+        <ion-card-content>
+          <br>
+          <br>
+          <br>
+          <img src="../../assets/copas.gif" style="color: black;" alt="" width="101" height="77">
+          <br>
+          <br>
+          <ion-label style="color: rgb(0, 0, 0);"> La toscana eventos</ion-label>
+          <br>
+          <ion-label style="color: rgb(0, 0, 0);">7:00 pm</ion-label>
+          <br>
+
+          <ion-button fill="clear" style="color: rgb(0, 0, 0);" (click)="mapa('salon')"> <span>
+              <ion-icon name="location-outline"></ion-icon>
+            </span>Ver mapa</ion-button>
+        </ion-card-content>
+
+
+      </ion-card>
+
+    </div>
+  </section>
+  <section class="parallax-bg" style="background-image: url('./../../assets/drescode.jpg'); height: 50vh;">
+  </section>
+  <section class="parallax-content" style="height: auto;">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="3">
+          <img src="../../assets/drescodeman.png" alt="" style="height: 100px; width: 90px;">
+        </ion-col>
+        <ion-col size="6" style="margin-top: -14vh;">
+          <h1 class="cursiva" style="color: rgb(0, 0, 0);" (click)="mapa('drive')">Dress Code</h1>
+          <h2 class="nueva" style="color: rgb(0, 0, 0);">Formal</h2>
+        </ion-col>
+        <ion-col size="3">
+          <img src="../../assets/drescodegirl.png" alt="" style="height: 100px; width: 70px;">
+        </ion-col>
+      </ion-row>
+      <ion-row style="margin-top: 1vh;"></ion-row>
+      <ion-row style="margin-top: 22vh;">
+        <p style="color:rgb(0, 0, 0)k;">Para una mejor experiencia para todos los presentes, hemos decidido celebrar
+          este momento sin niños. Deseamos que esta decisión no les impida asistir a nuestra celebración. </p>
+      </ion-row>
+    </ion-grid>
+
+    <div>
+
+      <div id="countdown"></div>
+    </div>
+  </section>
+  <section class="no-parallax-section bg-1" style="height: 60vh">
+    <div class="no-parallax-content">
+      <ion-grid style="margin-bottom: 30vh;">
+        <ion-row>
+          <ion-item class="cursiva"
+            style="margin-left: auto; margin-right: auto;margin-top: auto;margin-bottom: auto; font-size: large; z-index: 40;">
+            <br>
+
+            <ion-label class="cursiva">
+              <h2 class="cursiva" style="height: 50px;padding-top: 20px;"> Mesa de regalos</h2>
+            </ion-label>
+            <br>
+          </ion-item>
+
+
+        </ion-row>
+        <ion-row style="margin-top: 5vh;">
+          <ion-label>
+            <h2 style="color: black;">Tu presencia es nuestro mejor regalo, pero si deseas hacernos un obsequio,
+              te dejamos estas opciones:
+            </h2>
+          </ion-label>
+
+        </ion-row>
+        <ion-row style="margin-top: 5vh;">
+          <ion-col size="1">
+
+          </ion-col>
+          <ion-col size="4">
+            <img src="../../assets/amazon-logo.png" alt="" (click)="mapa('amazon')">
+          </ion-col>
+          <ion-col size="2"></ion-col>
+          <ion-col size="4">
+            <img src="../../assets/Liverpool-logo.png" alt="" (click)="mapa('liverpool')">
+          </ion-col>
+          <ion-col size="1"></ion-col>
+        </ion-row>
+        <ion-row style="margin-top: 10vh;">
+          <ion-label>
+            <h2 style="color: black;">O si lo prefieres puedes hacer una transferencia al siguiente numero de cuenta
+            </h2>
+            <br>
+            <h1 style="color: black;">
+              Clabe:072320011607682780
+            </h1>
+          </ion-label>
+
+
+        </ion-row>
+      </ion-grid>
+
+    </div>
+  </section>
+  <section class="no-parallax-section bg-1" style="height: 60vh">
+    <div class="no-parallax-content">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-label>
+              <h1 class="cursiva" style="color: black;">
+                Moments
+              </h1>
+            </ion-label>
+          </ion-col>
+
+        </ion-row>
+        <ion-row>
+          <ion-col style="margin: 20px; max-width: 35vh; max-width: 35vh;">
+            <swiper-container>
+              <swiper-slide> <img src="../../assets/IMG_6770.jpg" alt=""> </swiper-slide>
+              <swiper-slide> <img src="../../assets/fondo.jpg" alt=""></swiper-slide>
+              <swiper-slide> <img src="../../assets/cuentaRegresiva.JPG" alt=""></swiper-slide>
+            </swiper-container>
+
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+    </div>
+  </section>
+  <section class="no-parallax-section bg-1" style="height: 80vh;">
+    <ion-grid style="height:70vh; width: auto; margin-top: 10vh; margin-left: 5vh; margin-right: 5vh;">
+      <ion-col>
+        <ion-label>
+          <ion-grid>
+            <ion-row>
+              <ion-col size="3"></ion-col>
+              <ion-col size="6">
+                <h1 class="cursiva" style="color: black;">Confirma tu asistencia</h1>
+              </ion-col>
+              <ion-col size="3"></ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <p style="font-size: medium;">Lista de invitados</p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-label>
+        <ion-list *ngIf="this.data">
+          <div *ngFor="let value of this.data.data.Invitados">
+            <ion-toggle aria-label="Dark toggle" color="dark" [(ngModel)]="value.asistencia">
+
+              <ion-label style="font-size: large; color: blak;">
+                {{value.nombre}}
+              </ion-label>
+
+
+            </ion-toggle>
+            <br />
+            <br />
+          </div>
+
+
+        </ion-list>
+        <br>
+        <br>
+
+        <ion-button aria-label="Dark toggle" color="dark" (click)="confirmar(data.data.Invitados)">Enviar confirmacion
+        </ion-button>
+
+      </ion-col>
+    </ion-grid>
+
+  </section>
+</div>

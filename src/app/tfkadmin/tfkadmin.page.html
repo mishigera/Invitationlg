@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Admin</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Admin</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div style="margin: 5vh;">
+    Invitacion
+    <ion-input label="frase de la invitacion" labelPlacement="floating" [(ngModel)]="invitacion" [counter]="true" maxlength="20"></ion-input>
+    <ion-input label="nombre de la familia o invitados" labelPlacement="floating" [(ngModel)]="fraseInvitacion" [counter]="true" maxlength="20"></ion-input>
+    <br>
+    <br>
+
+    <div *ngFor="let item of invitados;let i = index">
+      Invitado {{i+1}}
+      <ion-input label="Nombre" labelPlacement="floating" [(ngModel)]="item.nombre" [counter]="true" maxlength="20"></ion-input>
+      <ion-input label="Frase" labelPlacement="floating" [counter]="true" [(ngModel)]="item.frase" maxlength="20"></ion-input>
+    </div>
+   <ion-label>Agregar Invitado</ion-label> <ion-fab-button size="small" (click)="agregaInvitado()"></ion-fab-button>
+  </div>
+<ion-button (click)="guardar()">guardar</ion-button>
+
+</ion-content>

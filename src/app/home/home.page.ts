@@ -18,6 +18,7 @@ export class HomePage {
   @ViewChild('swiper')
   swiperRef: ElementRef | undefined;
   swiper?: Swiper;
+  
   id:any;
   isAlertOpen = false;
   public alertButtons = ['OK'];
@@ -100,12 +101,12 @@ export class HomePage {
       this.playAudio();
     }
    // console.log("scroll: ", scrollOffset);
-    if(scrollOffset>1){
+    if(scrollOffset>100){
       this.flagPadres = true; 
-    }if(scrollOffset>700){
+    }if(scrollOffset>1000){
       this.flagCuenta = true;
     }
-     if(scrollOffset>900){
+     if(scrollOffset>1200){
       this.flagPadres = false;
   
     }

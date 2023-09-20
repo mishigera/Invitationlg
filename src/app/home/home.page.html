@@ -160,7 +160,7 @@
 
     </div>
   </section>
-  <section class="parallax-bg" style="background-image: url('./../../assets/drescode.jpg'); height: 50vh;">
+  <section class="parallax-bg" style="background-image: url('./../../assets/drescode.jpg');">
   </section>
   <section class="parallax-content" style="height: auto;">
     <ion-grid>
@@ -188,21 +188,14 @@
       <div id="countdown"></div>
     </div>
   </section>
-  <section class="no-parallax-section bg-1" style="height: 60vh">
+  <section class="no-parallax-section bg-1" style="height: 60vh; background-color: white;">
     <div class="no-parallax-content">
-      <ion-grid style="margin-bottom: 30vh;">
+      <ion-grid>
         <ion-row>
-          <ion-item class="cursiva"
-            style="margin-left: auto; margin-right: auto;margin-top: auto;margin-bottom: auto; font-size: large; z-index: 40;">
-            <br>
-
-            <ion-label class="cursiva">
-              <h2 class="cursiva" style="height: 50px;padding-top: 20px;"> Mesa de regalos</h2>
-            </ion-label>
-            <br>
-          </ion-item>
-
-
+          <ion-label class="cursiva" style="margin-left: auto;margin-right: auto;">
+            <h1 class="cursiva" style="color:black;"> Mesa de regalos</h1>
+          </ion-label>
+          <br>
         </ion-row>
         <ion-row style="margin-top: 5vh;">
           <ion-label>
@@ -241,7 +234,7 @@
 
     </div>
   </section>
-  <section class="no-parallax-section bg-1" style="height: 60vh">
+  <section class="no-parallax-section bg-1" style="height: 80vh;background-color: white;">
     <div class="no-parallax-content">
       <ion-grid>
         <ion-row>
@@ -256,10 +249,18 @@
         </ion-row>
         <ion-row>
           <ion-col style="margin: 20px; max-width: 35vh; max-width: 35vh;">
-            <swiper-container>
-              <swiper-slide> <img src="../../assets/IMG_6770.jpg" alt=""> </swiper-slide>
-              <swiper-slide> <img src="../../assets/fondo.jpg" alt=""></swiper-slide>
-              <swiper-slide> <img src="../../assets/cuentaRegresiva.JPG" alt=""></swiper-slide>
+            <swiper-container effect="cards" grab-cursor="true">
+              <swiper-slide  data-swiper-autoplay="20"> <img src="../../assets/f1.jpg" alt=""> </swiper-slide>
+              <swiper-slide  data-swiper-autoplay="20"> <img src="../../assets/f2.jpg" alt=""> </swiper-slide>
+              <swiper-slide  data-swiper-autoplay="2"> <img src="../../assets/f3.jpg" alt=""> </swiper-slide>
+              <swiper-slide> <img src="../../assets/f4.jpg" alt=""> </swiper-slide>
+              <swiper-slide> <img src="../../assets/f5.jpg" alt=""> </swiper-slide>
+              <swiper-slide> <img src="../../assets/f6.jpg" alt=""> </swiper-slide>
+              <swiper-slide> <img src="../../assets/f7.jpg" alt=""> </swiper-slide>
+              <swiper-slide> <img src="../../assets/f8.jpg" alt=""> </swiper-slide>
+              <swiper-slide> <img src="../../assets/f9.jpg" alt=""> </swiper-slide>
+              <swiper-slide> <img src="../../assets/f10.jpg" alt=""> </swiper-slide>
+              <swiper-slide> <img src="../../assets/f11.jpg" alt=""> </swiper-slide>
             </swiper-container>
 
           </ion-col>
@@ -274,38 +275,32 @@
         <ion-label>
           <ion-grid>
             <ion-row>
-              <ion-col size="3"></ion-col>
-              <ion-col size="6">
-                <h1 class="cursiva" style="color: black;">Confirma tu asistencia</h1>
-              </ion-col>
-              <ion-col size="3"></ion-col>
+              <ion-label class="cursiva" style="margin-left: auto;margin-right: auto;">
+                <h1 class="cursiva" style="color:black;">Confirma tu asistencia</h1>
+              </ion-label>
             </ion-row>
-            <ion-row>
-              <ion-col>
-                <p style="font-size: medium;">Lista de invitados</p>
-              </ion-col>
-            </ion-row>
+
           </ion-grid>
         </ion-label>
-        <ion-list *ngIf="this.data">
-          <div *ngFor="let value of this.data.data.Invitados">
-            <ion-toggle aria-label="Dark toggle" color="dark" [(ngModel)]="value.asistencia">
-
-              <ion-label style="font-size: large; color: blak;">
-                {{value.nombre}}
-              </ion-label>
-
-
-            </ion-toggle>
-            <br />
-            <br />
-          </div>
-
-
-        </ion-list>
-        <br>
-        <br>
-
+        <div >
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-label>
+                  <br>
+                  <br>
+                  <h3 style=" color: black;">Selecciona a las personas qe asistiran al evento:</h3>
+                </ion-label>
+              </ion-col>
+            </ion-row>
+            <ion-row  style="margin: 1vh;">
+              <div style="margin: 1vh;" *ngFor="let value of this.data.data.Invitados">
+                <ion-checkbox labelPlacement="end" style="color: black;" [(ngModel)]="value.asistencia">{{value.nombre}}</ion-checkbox>
+                <br />
+              </div>
+            </ion-row>
+          </ion-grid>
+        </div>
         <ion-button aria-label="Dark toggle" color="dark" (click)="confirmar(data.data.Invitados)">Enviar confirmacion
         </ion-button>
 

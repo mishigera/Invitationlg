@@ -5,7 +5,6 @@ import { AlertController, AlertOptions, LoadingController, createAnimation } fro
 import { timer } from 'rxjs';
 import { FirebaseService } from '../services/firestore.service';
 import { register } from 'swiper/element/bundle';
-
 register();
 
 
@@ -17,9 +16,9 @@ register();
 export class HomePage {
   @ViewChild('swiper')
   swiperRef: ElementRef | undefined;
-  swiper?: Swiper;
-  
-  id:any;
+  swiper ? : Swiper;
+
+  id: any;
   isAlertOpen = false;
   public alertButtons = ['OK'];
   _second = 1000;
@@ -36,79 +35,88 @@ export class HomePage {
   seconds: any;
   source = timer(0, 1000);
   clock: any;
-  data:any;
+  data: any;
   flagPlay = false;
+  flagFirst = false;
+  audio = new Audio;
   currentPhoto = " ../../assets/fotocolor.JPG"
 
-  constructor(public route: ActivatedRoute,private alertController: AlertController, public firebase:FirebaseService,private loadingCtrl: LoadingController) {}
+  constructor(public route: ActivatedRoute, private alertController: AlertController, public firebase: FirebaseService, private loadingCtrl: LoadingController) {}
   ngAfterViewInit(): void {
     var elem = document.getElementById('divMaster');
+
     this.muestraDiv(elem)
-    
+
   }
-  muestraDiv(elem:any){
+  muestraDiv(elem: any) {
     console.log(elem)
   }
- async iniciar(){
+  async iniciar() {
 
     this.clockStart();
-    this.data = localStorage.getItem('data');
-    this.data = JSON.parse(this.data)
-    if(!this.data){
-      this.data = await  this.firebase.findOne(this.id);
-      localStorage.setItem('data',JSON.stringify(this.data))
+    // this.data = localStorage.getItem('data');
+    // this.data = JSON.parse(this.data)
+    if (!this.data) {
+      this.data = await this.firebase.findOne(this.id);
+      localStorage.setItem('data', JSON.stringify(this.data))
     }
     this.presentAlert(this.data)
   }
-  async ngOnInit(){
-    this.id =  this.route.snapshot.paramMap.get('id');
+  async ngOnInit() {
+    this.id = this.route.snapshot.paramMap.get('id');
     this.iniciar()
-  
-    
+
+
 
   }
-  clockStart(){
+  clockStart() {
     this.clock = this.source.subscribe(t => {
       this.now = new Date();
       this.end = new Date('12/02/' + (this.now.getFullYear()) + ' 00:00');
       this.showDate();
     });
   }
-  async confirmar(invitados:any) {
+  async confirmar(invitados: any) {
     console.log(invitados)
     let asistencia = "";
-    this.data.data.numeroAperturas = Number( this.data.data.numeroAperturas )+1;
-    for(let item of invitados){
-      if(item.asistencia){
+    this.data.data.numeroAperturas = Number(this.data.data.numeroAperturas) + 1;
+    for (let item of invitados) {
+      if (item.asistencia) {
         asistencia = asistencia + " " + item.nombre;
       }
     }
     let msj = asistencia ? 'Gracias por confirmar la asistencia de' : 'Gracias por todo.'
     const loading = await this.loadingCtrl.create({
-      message: msj+asistencia,
+      message: msj + asistencia,
       duration: 3000,
     });
-    this.firebase.update(this.data.data,this.id)
+    this.firebase.update(this.data.data, this.id)
     loading.present();
   }
-  setData(evento:any,value:any){
+  setData(evento: any, value: any) {
     value = evento.detail.checked;
     console.log(evento)
   }
   onContentScroll(evento: any) {
     let scrollOffset = evento.srcElement.scrollTop;
-    if(!this.flagPlay){
-      this.playAudio();
+    if (!this.flagPlay ) {
+      if(!this.flagFirst){
+        this.flagFirst = true;
+        this.playAudio();
+      }
+
     }
-   // console.log("scroll: ", scrollOffset);
-    if(scrollOffset>100){
-      this.flagPadres = true; 
-    }if(scrollOffset>1000){
+    // console.log("scroll: ", scrollOffset);
+    if (scrollOffset > 100) {
+      
+      this.flagPadres = true;
+    }
+    if (scrollOffset > 1000) {
       this.flagCuenta = true;
     }
-     if(scrollOffset>1200){
+    if (scrollOffset > 1200) {
       this.flagPadres = false;
-  
+
     }
   }
   showDate() {
@@ -118,48 +126,51 @@ export class HomePage {
     this.minutes = Math.floor((distance % this._hour) / this._minute);
     this.seconds = Math.floor((distance % this._minute) / this._second);
   }
-  async presentAlert(datos:any) {
+  async presentAlert(datos: any) {
     let a: AlertOptions;
     console.log(datos)
     const alert = await this.alertController.create({
       header: 'Bienvenido a la invitacion de Leslie y Gerardo',
-      subHeader: datos.data.hasOwnProperty('frase') ? datos.data.frase: 'Leslie estas cordealmente invitado',
+      subHeader: datos.data.hasOwnProperty('frase') ? datos.data.frase : 'Leslie estas cordealmente invitado',
       message: 'Es importante que confirme su asistencia!',
       buttons: ['Ver'],
 
     });
-  
+
     await alert.present();
   }
 
   setOpen(isOpen: boolean) {
     this.isAlertOpen = isOpen;
   }
+  resume(){
+    if(this.flagPlay){
+      this.flagPlay = false;
+      this.audio.pause();
+    }else{
+      this.flagPlay = true;
+      this.audio.play();
+    }
+  }
   playAudio() {
-    let audio = new Audio;
-    console.log(audio);
-    audio.src = '../assets/cancion.mp3';
-    audio.load();
-    console.log(audio,'first')
-    audio.play();
+    this.audio.src = '../assets/cancion.mp3';
+    this.audio.volume = 0.50;
+    this.audio.load();
+
+    this.audio.play();
     this.flagPlay = true;
   }
-  mapa(evento:string){
-    if(evento == 'parroquia'){
+  mapa(evento: string) {
+    if (evento == 'parroquia') {
       window.open('https://goo.gl/maps/6FKGveH4ir1dwJZy5')
-    }
-    else if(evento == 'salon'){
+    } else if (evento == 'salon') {
       window.open('https://goo.gl/maps/MTmNWmpHhScVFeCS7')
-    }
-    else if(evento == 'amazon'){
+    } else if (evento == 'amazon') {
       window.open('https://www.amazon.com.mx/wedding/share/leslieygerardo')
-    }
-    else if(evento == 'liverpool'){
-      window.open('https://www.amazon.com.mx/wedding/share/leslieygerardo')
-    }
-    else if(evento == 'drive'){
+    } else if (evento == 'liverpool') {
+      window.open('https://mesaderegalos.liverpool.com.mx/milistaderegalos/51286566')
+    } else if (evento == 'drive') {
       window.open('https://drive.google.com/drive/folders/1qctSNq8yQwkzMBUkCTufd1xoGt04h8oy')
     }
   }
 }
-

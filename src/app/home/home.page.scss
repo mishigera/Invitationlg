@@ -25,11 +25,12 @@
 #container a {
   text-decoration: none;
 }
+
 swiper-container {
   width: 100%;
   height: 100%;
 }
- 
+
 swiper-slide {
   display: flex;
   flex-direction: column;
@@ -49,7 +50,7 @@ body {
   overflow: hidden;
   overflow-y: auto;
   perspective: 3px;
-  
+
 
 }
 
@@ -61,91 +62,108 @@ section {
   align-items: center;
   justify-content: center;
 }
+
 ion-item {
   --padding-start: 0;
 }
-.parallax-bg{
+
+
+.parallax-bg {
   background-position: center center;
   transform: translateZ(-0.5px) scale(2);
   background-size: cover;
   z-index: -1;
   height: 50vh;
 }
-.parallax-content{
+
+.parallax-content {
   z-index: -1;
   transform: translateY(-25vh) translateZ(0px) scale(1);
-  padding-left:30px;
-  padding-right:30px;
-  text-align:center;
+  padding-left: 30px;
+  padding-right: 30px;
+  text-align: center;
 }
-.no-parallax-section{
+
+.no-parallax-section {
   height: 7 0vh;
 }
-.no-parallax-content{
-  text-align:center;
-  padding:30px;
+
+.no-parallax-content {
+  text-align: center;
+  padding: 30px;
 }
+
 /*Colores de fondo*/
-.bg-1{
-  background:rgb(247, 247, 247);
+.bg-1 {
+  background: rgb(247, 247, 247);
 }
-.bg-2{
-  background:linear-gradient(90deg, rgba(0,83,33,1) 0%, rgba(215,198,1,1) 100%);
+
+.bg-2 {
+  background: linear-gradient(90deg, rgba(0, 83, 33, 1) 0%, rgba(215, 198, 1, 1) 100%);
 }
+
 /////////////////////////////
 /// 
-*{
-margin: 0;
-padding: 0
+* {
+  margin: 0;
+  padding: 0
 }
-.header{
+
+.header {
   padding: 55px 0px
-  }
-
-
-
-.countdown .back-text h4{
-color: red;
-background: red
 }
-#countdown{
-margin-top: 50px
+
+
+
+.countdown .back-text h4 {
+  color: red;
+  background: red
+}
+
+#countdown {
+  margin-top: 50px
 }
 
 ///////////////////
 
-  @import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Montserrat:ital,wght@1,500&display=swap');
-  @font-face {
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Montserrat:ital,wght@1,500&display=swap');
 
-    font-family: cursiva2;
-    
-    src: url('../../assets/fonts/alivia/AliviaRegular.ttf');
-    
-    }
-    @font-face {
+@font-face {
 
-      font-family: padresletra;
-      
-      src: url('../../assets/fonts/bacalisties/Bacalisties.ttf');
-      
-      }
-      
-    .letraPadres{
-      font-family: padresletra;
-   
-    }
-  .cursiva{
- // font-family: 'Cedarville Cursive', cursive;
- font-family: cursiva2;
+  font-family: cursiva2;
+
+  src: url('../../assets/fonts/alivia/AliviaRegular.ttf');
+
+}
+
+@font-face {
+
+  font-family: padresletra;
+
+  src: url('../../assets/fonts/bacalisties/Bacalisties.ttf');
+
+}
+
+.letraPadres {
+  font-family: padresletra;
+
+}
+
+.cursiva {
+  // font-family: 'Cedarville Cursive', cursive;
+  font-family: cursiva2;
 
   //font-family: 'Montserrat', sans-serif;
 }
-.sizeN{
+
+.sizeN {
   font-size: large
 }
-.nueva{
+
+.nueva {
   font-family: 'Montserrat', sans-serif;
 }
+
 .sectionClock {
 
   min-height: 20vh;
@@ -202,19 +220,19 @@ ul {
   font-family: 'Poppins', sans-serif;
   font-size: 20px;
   line-height: 10px;
- // font-weight: 700;
+  // font-weight: 700;
   display: block;
 }
 
 @font-face {
 
   font-family: jose;
-  
-  src: url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Josefin+Sans:ital,wght@0,200;0,300;1,300&family=Montserrat:ital,wght@1,500&display=swap');
-  
-  }
 
-.letrajose{
+  src: url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Josefin+Sans:ital,wght@0,200;0,300;1,300&family=Montserrat:ital,wght@1,500&display=swap');
+
+}
+
+.letrajose {
 
   font-family: jose;
 
@@ -233,14 +251,14 @@ ul {
   background-color: #17141d;
   border-radius: 10px;
   box-shadow: -1rem 0 3rem #000;
-/*   margin-left: -50px; */
+  /*   margin-left: -50px; */
   transition: 0.4s ease-out;
   position: relative;
   left: 0px;
 }
 
 .card:not(:first-child) {
-    margin-left: -50px;
+  margin-left: -50px;
 }
 
 .card:hover {
@@ -248,7 +266,7 @@ ul {
   transition: 0.4s ease-out;
 }
 
-.card:hover ~ .card {
+.card:hover~.card {
   position: relative;
   left: 50px;
   transition: 0.4s ease-out;
@@ -314,6 +332,7 @@ svg {
   stroke-dashoffset: 100;
   transition: 0.6s ease-out;
 }
+
 .nbody {
   background-color: #100e17;
   font-family: 'Open Sans', sans-serif;
@@ -326,4 +345,32 @@ svg {
   top: 60px;
   left: calc(50% - 23vh);
   display: flex;
+}
+.btn-flotante {
+	font-size: 10px; /* Cambiar el tamaño de la tipografia */
+	text-transform: uppercase; /* Texto en mayusculas */
+	font-weight: bold; /* Fuente en negrita o bold */
+	color: #ffffff; /* Color del texto */
+	border-radius: 5px; /* Borde del boton */
+	letter-spacing: 2px; /* Espacio entre letras */
+	background-color: #555555; /* Color de fondo */
+	padding: 10px 15px; /* Relleno del boton */
+	position: fixed;
+	bottom: 30px;
+	right: 40px;
+	transition: all 300ms ease 0ms;
+	box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+	z-index: 99;
+}
+.btn-flotante:hover {
+	background-color: #c0c0c0; /* Color de fondo al pasar el cursor */
+	box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.3);
+}
+@media only screen and (max-width: 600px) {
+ 	.btn-flotante {
+		font-size: 14px;
+		padding: 12px 20px;
+		bottom: 20px;
+		right: 20px;
+	}
 }

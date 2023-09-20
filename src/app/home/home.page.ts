@@ -38,6 +38,7 @@ export class HomePage {
   data: any;
   flagPlay = false;
   flagFirst = false;
+  flagNinios = true;
   audio = new Audio;
   currentPhoto = " ../../assets/fotocolor.JPG"
 
@@ -58,13 +59,34 @@ export class HomePage {
     // this.data = JSON.parse(this.data)
     if (!this.data) {
       this.data = await this.firebase.findOne(this.id);
-      localStorage.setItem('data', JSON.stringify(this.data))
+      if(!this.data.data){
+        this.data = undefined;
+      }
+      if(!this.data){
+        let a: AlertOptions;
+        const alert = await this.alertController.create({
+          header: 'Creo qe paso un error comunicate con los novios',
+          subHeader: 'ups',
+          buttons: ['Ver'],
+        });
+        await alert.present();
+      }else{
+        if(this.data.data.hasOwnProperty('noNinios')){
+          this.flagNinios = false;
+        }
+        this.presentAlert(this.data)
+      }
     }
-    this.presentAlert(this.data)
+   
   }
   async ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
-    this.iniciar()
+    if(!this.id){
+    return;
+    }else{
+      this.iniciar()
+    }
+   
 
 
 

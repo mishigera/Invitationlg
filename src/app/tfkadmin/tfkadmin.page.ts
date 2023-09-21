@@ -10,19 +10,25 @@ export class TfkadminPage implements OnInit {
   invitados = [{nombre:'',asistencia:false,frase:''}]
   invitacion = "";
   fraseInvitacion = "";
+  ninios = false;
   constructor(public firebase:FirebaseService) { }
 
   ngOnInit() {
   }
   guardar(){
-    this.firebase.setdata({
-            frase: this.fraseInvitacion,
-            nombre: this.invitacion,
-            numeroAperturas: 0,
-            Invitados: this.invitados,
-            numeroInvitados: this.invitados.length,
-        
-    })
+    let data:any = {
+      frase: this.fraseInvitacion,
+      nombre: this.invitacion,
+      numeroAperturas: 0,
+      Invitados: this.invitados,
+      numeroInvitados: this.invitados.length,
+      mensaje: '',
+  
+}
+if(this.ninios){
+  data.noNinios = true;
+}
+    this.firebase.setdata(data)
     this.fraseInvitacion = "";
     this.invitacion = "";
     this.invitados = [{nombre:'',asistencia:false,frase:''}]

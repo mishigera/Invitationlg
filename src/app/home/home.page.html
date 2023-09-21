@@ -303,11 +303,13 @@
                 </ion-label>
               </ion-col>
             </ion-row>
-            <ion-row style="margin: 1vh;" *ngIf="this.data">
-              <div style="margin: 1vh;" *ngFor="let value of this.data.data.Invitados">
-                <ion-checkbox color="dark" labelPlacement="end" style="color: black;" [(ngModel)]="value.asistencia">
+            <ion-row style="margin: 1vh;display: block!important;" *ngIf="this.data">
+              <div style="margin: 1vh; display: block!important;" *ngFor="let value of this.data.data.Invitados">
+                <p></p>
+                <ion-checkbox style="display: block!important;" color="dark" labelPlacement="end" style="color: black;" [(ngModel)]="value.asistencia">
                   {{value.nombre}}</ion-checkbox>
-                <br />
+                  <p></p>
+          
               </div>
             </ion-row>
           </ion-grid>

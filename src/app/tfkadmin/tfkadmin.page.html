@@ -12,15 +12,17 @@
   </ion-header>
   <div style="margin: 5vh;">
     Invitacion
-    <ion-input label="frase de la invitacion" labelPlacement="floating" [(ngModel)]="invitacion" [counter]="true" maxlength="20"></ion-input>
-    <ion-input label="nombre de la familia o invitados" labelPlacement="floating" [(ngModel)]="fraseInvitacion" [counter]="true" maxlength="20"></ion-input>
+    <ion-input label="Nombre de familia" labelPlacement="floating" [(ngModel)]="invitacion" [counter]="true" maxlength="90"></ion-input>
+    <ion-input label="Frase invitado" labelPlacement="floating" [(ngModel)]="fraseInvitacion" [counter]="true" maxlength="140"></ion-input>
+    <ion-checkbox color="dark" labelPlacement="end" style="color: rgb(255, 255, 255);" [(ngModel)]="ninios">sin niños</ion-checkbox>
     <br>
     <br>
-
+    <br>
+    <br>
     <div *ngFor="let item of invitados;let i = index">
       Invitado {{i+1}}
       <ion-input label="Nombre" labelPlacement="floating" [(ngModel)]="item.nombre" [counter]="true" maxlength="20"></ion-input>
-      <ion-input label="Frase" labelPlacement="floating" [counter]="true" [(ngModel)]="item.frase" maxlength="20"></ion-input>
+      <ion-input label="Nombre a mostrar" labelPlacement="floating" [counter]="true" [(ngModel)]="item.frase" maxlength="20"></ion-input>
     </div>
    <ion-label>Agregar Invitado</ion-label> <ion-fab-button size="small" (click)="agregaInvitado()"></ion-fab-button>
   </div>

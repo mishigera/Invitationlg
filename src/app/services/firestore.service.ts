@@ -40,10 +40,11 @@ export class FirebaseService {
 
   }
   async setdata(obj: any) {
+     console.log(obj)
     const app = initializeApp(this.firebaseConfig);
     const db = getFirestore(app);
     const citiesRef = collection(db, "Invitaciones");
-    await setDoc(doc(citiesRef,obj.id), obj);
+    await setDoc(doc(citiesRef), obj);
 
   }
   async findOne(id: any) {

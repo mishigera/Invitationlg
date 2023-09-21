@@ -129,11 +129,11 @@ export class HomePage {
 
     }
     // console.log("scroll: ", scrollOffset);
-    if (scrollOffset > 100) {
+    if (scrollOffset > 200) {
       
       this.flagPadres = true;
     }
-    if (scrollOffset > 1000) {
+    if (scrollOffset > 1300) {
       this.flagCuenta = true;
     }
     if (scrollOffset > 1200) {

@@ -21,8 +21,12 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 </head>
 
-<body>
+<body onFocus="Musica_suena(true)">
   <app-root></app-root>
 </body>
-
+<script>
+  function Musica_suena(valor){
+    localStorage.setItem('noviendo','true')
+  }
+</script>
 </html>

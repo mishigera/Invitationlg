@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import Swiper from 'swiper';
 import { AlertController, AlertOptions, LoadingController, createAnimation } from '@ionic/angular';
@@ -24,6 +24,7 @@ export class HomePage {
   _second = 1000;
   flagPadres = false;
   flagCuenta = false;
+  flagDelay = false;
   _minute = this._second * 60;
   _hour = this._minute * 60;
   _day = this._hour * 24;
@@ -43,6 +44,10 @@ export class HomePage {
   currentPhoto = " ../../assets/fotocolor.JPG"
 
   constructor(public route: ActivatedRoute, private alertController: AlertController, public firebase: FirebaseService, private loadingCtrl: LoadingController) {}
+
+  conlog(){
+    console.log('si ahuevo')
+  }
   ngAfterViewInit(): void {
     var elem = document.getElementById('divMaster');
 
@@ -63,13 +68,16 @@ export class HomePage {
         this.data = undefined;
       }
       if(!this.data){
+        this.flagDelay = true;
         let a: AlertOptions;
         const alert = await this.alertController.create({
           header: 'Creo qe paso un error comunicate con los novios',
           subHeader: 'ups',
           buttons: ['Ver'],
         });
+      
         await alert.present();
+      
       }else{
         if(this.data.data.hasOwnProperty('noNinios')){
           this.flagNinios = false;
@@ -78,6 +86,10 @@ export class HomePage {
       }
     }
    
+  }
+  ngOnChanges(cambios:ChangeDetectionStrategy): void {
+    console.log(cambios)
+    
   }
   async ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -129,11 +141,11 @@ export class HomePage {
 
     }
     // console.log("scroll: ", scrollOffset);
-    if (scrollOffset > 200) {
+    if (scrollOffset > 300) {
       
       this.flagPadres = true;
     }
-    if (scrollOffset > 1300) {
+    if (scrollOffset > 1100) {
       this.flagCuenta = true;
     }
     if (scrollOffset > 1200) {
@@ -175,12 +187,15 @@ export class HomePage {
     }
   }
   playAudio() {
-    this.audio.src = '../assets/cancion.mp3';
-    this.audio.volume = 0.50;
-    this.audio.load();
+   
+      this.audio.src = '../assets/cancion.mp3';
+      this.audio.volume = 0.50;
+      this.audio.load();
+      this.audio.play();
+      this.flagPlay = true;
+      localStorage.setItem('activo','true')
+    
 
-    this.audio.play();
-    this.flagPlay = true;
   }
   mapa(evento: string) {
     if (evento == 'parroquia') {

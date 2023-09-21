@@ -1,4 +1,4 @@
-<ion-header style="background-color: black;">
+<ion-header style="background-color: black;" onFocus="conlog(true)">
   <ion-toolbar style="background-color: black;">
     <ion-title>L&G</ion-title>
   </ion-toolbar>
@@ -6,7 +6,7 @@
 </ion-header>
 
 
-<div id="divMaster" class="container" (scroll)="onContentScroll($event)">
+<div onFocus="conlog(true)" id="divMaster" class="container" (scroll)="onContentScroll($event)" *ngIf="this.data">
 
   <!-- Seccion parallax -->
   <section class="parallax-bg" style="background-image: url('./../../assets/portada.jpg'); height: 100vh;"></section>
@@ -177,7 +177,7 @@
         </ion-col>
       </ion-row>
       <ion-row style="margin-top: 1vh;"></ion-row>
-      <ion-row style="margin-top: 22vh;">
+      <ion-row style="margin-top: 10vh;background-color: rgba(0, 0, 0, 0.208);" >
         <p style="color: rgb(255, 255, 255); margin-left: auto;margin-right: auto;" *ngIf="flagNinios">
           SOLO ADULTOS NO NIÑOS
         </p>
@@ -260,7 +260,7 @@
         </ion-row>
         <ion-row>
           <ion-col style="margin: 20px; max-width: 35vh; max-width: 35vh;">
-            <swiper-container effect="cards" grab-cursor="true" style="box-shadow: ;">
+            <swiper-container effect="cards" grab-cursor="true" >
               <swiper-slide data-swiper-autoplay="20"> <img src="../../assets/f1.jpg" alt=""> </swiper-slide>
               <swiper-slide data-swiper-autoplay="20"> <img src="../../assets/f2.jpg" alt=""> </swiper-slide>
               <swiper-slide data-swiper-autoplay="2"> <img src="../../assets/f3.jpg" alt=""> </swiper-slide>
@@ -331,4 +331,20 @@
     </ion-grid>
 
   </section>
+</div>
+<div class=" "  *ngIf="flagDelay">
+  <swiper-container effect="cards" grab-cursor="true">
+    <swiper-slide data-swiper-autoplay="20"> <img src="../../assets/f1.jpg" alt=""> </swiper-slide>
+    <swiper-slide data-swiper-autoplay="20"> <img src="../../assets/f2.jpg" alt=""> </swiper-slide>
+    <swiper-slide data-swiper-autoplay="2"> <img src="../../assets/f3.jpg" alt=""> </swiper-slide>
+    <swiper-slide> <img src="../../assets/f4.jpg" alt=""> </swiper-slide>
+    <swiper-slide> <img src="../../assets/f5.jpg" alt=""> </swiper-slide>
+    <swiper-slide> <img src="../../assets/f6.jpg" alt=""> </swiper-slide>
+    <swiper-slide> <img src="../../assets/f7.jpg" alt=""> </swiper-slide>
+    <swiper-slide> <img src="../../assets/f8.jpg" alt=""> </swiper-slide>
+    <swiper-slide> <img src="../../assets/f9.jpg" alt=""> </swiper-slide>
+    <swiper-slide> <img src="../../assets/f10.jpg" alt=""> </swiper-slide>
+    <swiper-slide> <img src="../../assets/f11.jpg" alt=""> </swiper-slide>
+  </swiper-container>
+
 </div>

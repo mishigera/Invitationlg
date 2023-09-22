@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'tfkadmin',
     loadChildren: () => import('./tfkadmin/tfkadmin.module').then( m => m.TfkadminPageModule)
   },
+  {
+    path: 'lesliemode',
+    loadChildren: () => import('./lesliemode/lesliemode.module').then( m => m.LesliemodePageModule)
+  },
 
 ];
 

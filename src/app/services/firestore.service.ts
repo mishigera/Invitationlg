@@ -19,7 +19,25 @@ export class FirebaseService {
   constructor() {
     this.iniciar();
   }
-
+  async findAll(){
+      console.log('entor aqui')
+      // Initialize Firebase
+      const app = initializeApp(this.firebaseConfig);
+      const analytics = getAnalytics(app);
+      const db = getFirestore(app);
+      const citiesRef = collection(db, "Invitaciones");
+      const q = query(citiesRef );
+      const querySnapshot = await getDocs(q);
+      let value:any = [];
+      querySnapshot.forEach((doc) => {
+        let aux = {
+          data: doc.data(),
+          id: doc.id
+        }
+        value.push(aux)
+      });
+     return value;
+  }
   async iniciar() {
     //   console.log('entor aqui')
     //   // Initialize Firebase
@@ -40,7 +58,7 @@ export class FirebaseService {
 
   }
   async setdata(obj: any) {
-     console.log(obj)
+    console.log(obj)
     const app = initializeApp(this.firebaseConfig);
     const db = getFirestore(app);
     const citiesRef = collection(db, "Invitaciones");
@@ -64,6 +82,24 @@ export class FirebaseService {
         status: 1,
       }
     }
+    return value;
+
+  }
+  async findOnebyname(name: any) {
+
+    const app = initializeApp(this.firebaseConfig);
+    const db = getFirestore(app);
+    const q = query(collection(db, "Invitaciones"), where("nombre", "==", name));
+    let value;
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      value = {
+        id: doc.id,
+        data: doc.data(),
+      }
+    });
+
     return value;
 
   }

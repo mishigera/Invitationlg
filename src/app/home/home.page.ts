@@ -43,9 +43,24 @@ export class HomePage {
   audio = new Audio;
   currentPhoto = " ../../assets/fotocolor.JPG"
 
-  constructor(public route: ActivatedRoute, private alertController: AlertController, public firebase: FirebaseService, private loadingCtrl: LoadingController) {}
+  constructor(public route: ActivatedRoute, private alertController: AlertController, public firebase: FirebaseService, private loadingCtrl: LoadingController) {
+    document.addEventListener("visibilitychange", (event => {
+      if (document.hidden) {
+        if (this.flagPlay) {
+          this.audio.pause();
+          this.flagPlay = false;
+        }
+      } else {
+        if (!this.flagPlay) {
+          this.audio.play();
+          this.flagPlay = true;
+        }
 
-  conlog(){
+      }
+    }));
+  }
+
+  conlog() {
     console.log('si ahuevo')
   }
   ngAfterViewInit(): void {
@@ -58,16 +73,23 @@ export class HomePage {
     console.log(elem)
   }
   async iniciar() {
-
+    if(screen.width>700){
+      const alert = await this.alertController.create({
+        header: 'Gracias por entrar te recomendamos ver la invitacion en un celular para mejor experiencia gracias',
+        subHeader: 'de antemano gracias',
+        buttons: ['Ver'],
+      });
+      await alert.present();
+    }
     this.clockStart();
     // this.data = localStorage.getItem('data');
     // this.data = JSON.parse(this.data)
     if (!this.data) {
       this.data = await this.firebase.findOne(this.id);
-      if(!this.data.data){
+      if (!this.data.data) {
         this.data = undefined;
       }
-      if(!this.data){
+      if (!this.data) {
         this.flagDelay = true;
         let a: AlertOptions;
         const alert = await this.alertController.create({
@@ -75,33 +97,31 @@ export class HomePage {
           subHeader: 'ups',
           buttons: ['Ver'],
         });
-      
+
         await alert.present();
-      
-      }else{
-        if(this.data.data.hasOwnProperty('noNinios')){
+
+      } else {
+        this.data.data.numeroAperturas = Number(this.data.data.numeroAperturas)+1;
+        await this.firebase.update(this.data.data, this.id)
+        if (this.data.data.hasOwnProperty('noNinios')) {
           this.flagNinios = false;
         }
         this.presentAlert(this.data)
       }
     }
-   
+
   }
-  ngOnChanges(cambios:ChangeDetectionStrategy): void {
+  ngOnChanges(cambios: ChangeDetectionStrategy): void {
     console.log(cambios)
-    
+
   }
   async ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
-    if(!this.id){
-    return;
-    }else{
+    if (!this.id) {
+      return;
+    } else {
       this.iniciar()
     }
-   
-
-
-
   }
   clockStart() {
     this.clock = this.source.subscribe(t => {
@@ -133,8 +153,8 @@ export class HomePage {
   }
   onContentScroll(evento: any) {
     let scrollOffset = evento.srcElement.scrollTop;
-    if (!this.flagPlay ) {
-      if(!this.flagFirst){
+    if (!this.flagPlay) {
+      if (!this.flagFirst) {
         this.flagFirst = true;
         this.playAudio();
       }
@@ -142,7 +162,7 @@ export class HomePage {
     }
     // console.log("scroll: ", scrollOffset);
     if (scrollOffset > 300) {
-      
+
       this.flagPadres = true;
     }
     if (scrollOffset > 1100) {
@@ -150,7 +170,6 @@ export class HomePage {
     }
     if (scrollOffset > 1200) {
       this.flagPadres = false;
-
     }
   }
   showDate() {
@@ -177,24 +196,24 @@ export class HomePage {
   setOpen(isOpen: boolean) {
     this.isAlertOpen = isOpen;
   }
-  resume(){
-    if(this.flagPlay){
+  resume() {
+    if (this.flagPlay) {
       this.flagPlay = false;
       this.audio.pause();
-    }else{
+    } else {
       this.flagPlay = true;
       this.audio.play();
     }
   }
   playAudio() {
-   
-      this.audio.src = '../assets/cancion.mp3';
-      this.audio.volume = 0.50;
-      this.audio.load();
-      this.audio.play();
-      this.flagPlay = true;
-      localStorage.setItem('activo','true')
-    
+
+    this.audio.src = '../assets/cancion.mp3';
+    this.audio.volume = 0.50;
+    this.audio.load();
+    this.audio.play();
+    this.flagPlay = true;
+    localStorage.setItem('activo', 'true')
+
 
   }
   mapa(evento: string) {

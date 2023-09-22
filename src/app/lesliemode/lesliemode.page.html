@@ -1,0 +1,163 @@
+<ion-header [translucent]="true">
+  <ion-toolbar >
+    <ion-title>lesliemode</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar >
+      <ion-title size="large">L e s l i e &nbsp; B r i d e</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-searchbar placeholder="Buscar invitacion" [debounce]="1000" (ionInput)="handleInput($event)"></ion-searchbar>
+  <ion-card (click)="copiar(this.data.id)" style="background-color: #fdf1f1; border: 2px solid #eebbbb ;" *ngIf="flag == 'una'">
+    <ion-card-header>
+      <ion-card-title>{{data.data.nombre}}</ion-card-title>
+      <ion-card-subtitle>{{data.id}}</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content >
+      <ion-grid>
+
+        <ion-row style="margin-left: auto;">          
+          <ion-col >
+            Invitados
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            confirmados:
+          </ion-col>
+          <ion-col>
+            Sin confirmar
+          </ion-col>
+        </ion-row>
+        <ion-row *ngFor="let item of this.data.data.Invitados">
+ 
+          <ion-col>
+            <ion-label *ngIf="item.asistencia">
+              {{item.nombre}}
+            </ion-label>
+          </ion-col>
+          <ion-col>
+            <ion-label *ngIf="!item.asistencia">
+              {{item.nombre}}
+            </ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <br>
+          <br>
+          <ion-col>
+            Numero Aperturas {{data.data.numeroAperturas}}
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            Mensaje
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+           {{this.data.data.mensaje ? this.data.data.mensaje:'aun no deja mensaje'}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+ 
+    </ion-card-content>
+  </ion-card>
+  <div *ngIf="flag == 'todas'">
+    <ion-card  (click)="copiar(_data.id)"style="background-color: #eebbbb; border: 2px solid #fdf1f1 ;" *ngFor="let _data of this.data">
+      <ion-card-header>
+        <ion-card-title>{{_data.data.nombre}}</ion-card-title>
+        <ion-card-subtitle>{{_data.id}}</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content>
+        <ion-grid>
+          <ion-row style="margin-left: auto;">
+            <ion-col >
+              Invitados
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              confirmados
+            </ion-col>
+            <ion-col>
+              Sin confirmar
+            </ion-col>
+          </ion-row>
+          <ion-row *ngFor="let item of _data.data.Invitados">
+   
+            <ion-col>
+              <ion-label *ngIf="item.asistencia">
+                {{item.nombre}}
+              </ion-label>
+            </ion-col>
+            <ion-col>
+              <ion-label *ngIf="!item.asistencia">
+                {{item.nombre}}
+              </ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <br>
+            <br>
+            <ion-col>
+              Numero Aperturas {{_data.data.numeroAperturas}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              Mensaje
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+             {{_data.data.mensaje ? _data.data.mensaje:'aun no deja mensaje'}}
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+   
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+
+    <ion-label *ngIf="flag == 'noData'">
+      <h1>No encontramos una invitacion con ese nombre</h1>
+    </ion-label>
+    <div *ngIf="flag == 'confirmados'">
+      <ion-grid>
+        <ion-row style="margin-left: auto;">
+          <ion-col >
+            Invitados
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            confirmados {{confirmados}}
+          </ion-col>
+          <ion-col>
+            Sin confirmar {{sinConfirmar}}
+          </ion-col>
+        </ion-row>
+        <ion-row style=" background-color: #fdf1f1;" *ngFor="let item of this.confirmadosArray">
+  
+          <ion-col style="border: 2px solid #eebbbb ;">
+            <ion-label *ngIf="item.asistencia">
+              {{item.nombre}}
+            </ion-label>
+          </ion-col>
+          <ion-col style="border: 2px solid #eebbbb ;">
+            <ion-label *ngIf="!item.asistencia">
+              {{item.nombre}}
+            </ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+  
+    </div>
+</ion-content>

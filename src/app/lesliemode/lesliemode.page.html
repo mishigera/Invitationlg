@@ -63,6 +63,11 @@
            {{this.data.data.mensaje ? this.data.data.mensaje:'aun no deja mensaje'}}
           </ion-col>
         </ion-row>
+        <ion-row>
+          <ion-col>
+            http://invitaciongerardoyleslie.com/invitados/{{this.data.id}}
+          </ion-col>
+        </ion-row>
       </ion-grid>
  
     </ion-card-content>
@@ -71,7 +76,7 @@
     <ion-card  (click)="copiar(_data.id)"style="background-color: #eebbbb; border: 2px solid #fdf1f1 ;" *ngFor="let _data of this.data">
       <ion-card-header>
         <ion-card-title>{{_data.data.nombre}}</ion-card-title>
-        <ion-card-subtitle>{{_data.id}}</ion-card-subtitle>
+        <ion-card-title>  http://invitaciongerardoyleslie.com/invitados/{{_data.id}}</ion-card-title>
       </ion-card-header>
     
       <ion-card-content>

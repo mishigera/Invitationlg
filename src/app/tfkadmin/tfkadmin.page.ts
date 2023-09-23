@@ -29,10 +29,10 @@ if(this.ninios){
   data.noNinios = true;
 }
 console.log(data)
-    // this.firebase.setdata(data)
-    // this.fraseInvitacion = "";
-    // this.invitacion = "";
-    // this.invitados = [{nombre:'',asistencia:false,frase:''}]
+    this.firebase.setdata(data)
+    this.fraseInvitacion = "";
+    this.invitacion = "";
+    this.invitados = [{nombre:'',asistencia:false,frase:''}]
   }
   agregaInvitado(){
     this.invitados.push({nombre:'',asistencia:false,frase:''});

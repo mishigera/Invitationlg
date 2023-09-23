@@ -20,6 +20,8 @@ export class TfkadminPage implements OnInit {
       frase: this.fraseInvitacion,
       nombre: this.invitacion,
       numeroAperturas: 0,
+      numeroClicksA: 0,
+      numeroClicksL: 0,
       Invitados: this.invitados,
       numeroInvitados: this.invitados.length,
       mensaje: '',
@@ -32,6 +34,7 @@ console.log(data)
     this.firebase.setdata(data)
     this.fraseInvitacion = "";
     this.invitacion = "";
+    this.ninios = false;
     this.invitados = [{nombre:'',asistencia:false,frase:''}]
   }
   agregaInvitado(){

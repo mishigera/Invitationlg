@@ -67,10 +67,18 @@ export class HomePage {
     var elem = document.getElementById('divMaster');
 
     this.muestraDiv(elem)
-
   }
   muestraDiv(elem: any) {
     console.log(elem)
+  }
+  async clickM(cual:any){
+    if(cual == 'a'){
+      this.data.data.numeroClicksA = Number(this.data.data.numeroClicksA)+1;
+      await this.firebase.update(this.data.data,this.id)
+    }else{
+      this.data.data.numeroClicksL = Number(this.data.data.numeroClicksL)+1;
+    await this.firebase.update(this.data.data,this.id)
+    }
   }
   async iniciar() {
     if(screen.width>700){

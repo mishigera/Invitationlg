@@ -46,11 +46,17 @@
             </ion-label>
           </ion-col>
         </ion-row>
-        <ion-row>
+        <ion-row style="margin-top: 4vh;">
           <br>
           <br>
           <ion-col>
             Numero Aperturas {{data.data.numeroAperturas}}
+          </ion-col>
+          <ion-col>
+            Numero clickA {{data.data.numeroClicksA}}
+          </ion-col>
+          <ion-col>
+            Numero clickL {{data.data.numeroClicksL}}
           </ion-col>
         </ion-row>
         <ion-row>
@@ -76,7 +82,7 @@
     <ion-card  (click)="copiar(_data.id)"style="background-color: #eebbbb; border: 2px solid #fdf1f1 ;" *ngFor="let _data of this.data">
       <ion-card-header>
         <ion-card-title>{{_data.data.nombre}}</ion-card-title>
-        <ion-card-title>  http://invitaciongerardoyleslie.com/invitados/{{_data.id}}</ion-card-title>
+       <ion-card-subtitle>{{_data.id}}</ion-card-subtitle> 
       </ion-card-header>
     
       <ion-card-content>
@@ -107,11 +113,17 @@
               </ion-label>
             </ion-col>
           </ion-row>
-          <ion-row>
+          <ion-row style="margin-top: 4vh;">
             <br>
             <br>
             <ion-col>
               Numero Aperturas {{_data.data.numeroAperturas}}
+            </ion-col>
+            <ion-col>
+              Numero clickA {{_data.data.numeroClicksA}}
+            </ion-col>
+            <ion-col>
+              Numero clickL {{_data.data.numeroClicksL}}
             </ion-col>
           </ion-row>
           <ion-row>
@@ -122,6 +134,11 @@
           <ion-row>
             <ion-col>
              {{_data.data.mensaje ? _data.data.mensaje:'aun no deja mensaje'}}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              http://invitaciongerardoyleslie.com/invitados/{{this.data.id}}
             </ion-col>
           </ion-row>
         </ion-grid>

@@ -22,7 +22,7 @@
     <div *ngFor="let item of invitados;let i = index">
       Invitado {{i+1}}
       <ion-input label="Nombre" labelPlacement="floating" [(ngModel)]="item.nombre" [counter]="true" maxlength="50"></ion-input>
-      <ion-input label="Nombre a mostrar" labelPlacement="floating" [counter]="true" [(ngModel)]="item.frase" maxlength="50"></ion-input>
+      <ion-input label="Nombre para nosotros" labelPlacement="floating" [counter]="true" [(ngModel)]="item.frase" maxlength="50"></ion-input>
     </div>
    <ion-label>Agregar Invitado</ion-label> <ion-fab-button size="small" (click)="agregaInvitado()"></ion-fab-button>
   </div>

@@ -29,7 +29,7 @@ flag = 'noData'
             this.data = await this.firebase.findAll();
             this.flag = 'todas'
         }else{
-          this.data = await this.firebase.findOnebyname(evento.detail.value);
+          this.data = await this.firebase.findOnebyname(evento.detail.value.toLowerCase());
           this.flag = 'una'
           console.log(this.data)
         }

@@ -21,17 +21,20 @@ flag = 'noData'
       if(evento){
         if(evento.detail.value.toLowerCase() == 'confirmados' || evento.detail.value.toLowerCase() == 'confirmacion' || evento.detail.value.toLowerCase() == 'confirmados'){
            this.data = await this.firebase.findAll();
-            console.log(this.data)
+          //  console.log(this.data)
             this.confirmadosArray = await this.filtrarConfirmaciones(this.data);
             this.flag = 'confirmados';
         }
         else if(evento.detail.value.toLowerCase() == 'todas'){
             this.data = await this.firebase.findAll();
+            for(let item of this.data){
+              console.log(item.data.hasOwnProperty('vencida'))
+            }
             this.flag = 'todas'
         }else{
           this.data = await this.firebase.findOnebyname(evento.detail.value.toLowerCase());
           this.flag = 'una'
-          console.log(this.data)
+        //  console.log(this.data)
         }
         if(!this.data){
           this.flag = 'noData'

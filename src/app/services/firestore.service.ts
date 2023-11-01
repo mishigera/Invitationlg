@@ -58,7 +58,7 @@ export class FirebaseService {
 
   }
   async setdata(obj: any) {
-    console.log(obj)
+   // console.log(obj)
     const app = initializeApp(this.firebaseConfig);
     const db = getFirestore(app);
     const citiesRef = collection(db, "Invitaciones");
@@ -110,10 +110,10 @@ export class FirebaseService {
     const docRef = doc(db, 'Invitaciones', id);
     updateDoc(docRef, data)
       .then(docRef => {
-        console.log("A New Document Field has been added to an existing document");
+      //  console.log("A New Document Field has been added to an existing document");
       })
       .catch(error => {
-        console.log(error);
+     //   console.log(error);
       })
   }
 }

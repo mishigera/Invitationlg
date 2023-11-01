@@ -5,346 +5,356 @@
 
 </ion-header>
 
+<div *ngIf="!flagIniciar">
+  <h1 style="display: flex;text-align: center;">
+    <ion-spinner name="dots" style="width: 400px;height: 400px;"></ion-spinner>
 
-<div onFocus="conlog(true)" id="divMaster" class="container" (scroll)="onContentScroll($event)" *ngIf="this.data">
+  </h1>
 
-  <!-- Seccion parallax -->
-  <section class="parallax-bg" style="background-image: url('./../../assets/portada.jpg'); height: 100vh;"></section>
-  <section class="parallax-content">
-  </section>
-
-  <!-- Seccion NO parallax -->
-  <section id="padres" class="no-parallax-section bg-1"
-    style="height: 80vh;background-image: url('../../assets/fondo2.jpg'); background-size: cover;height: 90vh;">
-    <div class="no-parallax-content animate__animated "
-      [ngClass]="{animate__zoomIn:flagPadres, animate__fadeOut:!flagPadres}" style="--animate-duration: 1s;"
-      *ngIf="flagPadres">
-      <ion-label class="letrajose" style="margin-bottom: 5vh; color: rgb(255, 255, 255);">Tenemos el honor de invitarlos
-        a nuestro enlace nupcial,
-        con la bendicion de Dios y de nuestros Padres:
-      </ion-label>
-
-      <br>
-      <br>
-
-      <ion-card style="margin: 1vh; width: 40%; --width:100%; "
-        style="background-color: rgba(42, 66, 45, 0.153);border: solid 2px rgb(255, 255, 255);">
+</div>
+<div *ngIf="flagIniciar">
+  <div onFocus="conlog(true)" id="divMaster" class="container" (scroll)="onContentScroll($event)" *ngIf="this.data">
+  
+    <!-- Seccion parallax -->
+    <section class="parallax-bg" style="background-image: url('./../../assets/portada.jpg'); height: 100vh;"></section>
+    <section class="parallax-content">
+    </section>
+  
+    <!-- Seccion NO parallax -->
+    <section id="padres" class="no-parallax-section bg-1"
+      style="height: 80vh;background-image: url('../../assets/fondo2.jpg'); background-size: cover;height: 90vh;">
+      <div class="no-parallax-content animate__animated "
+        [ngClass]="{animate__zoomIn:flagPadres, animate__fadeOut:!flagPadres}" style="--animate-duration: 1s;"
+        *ngIf="flagPadres">
+        <ion-label class="letrajose" style="margin-bottom: 5vh; color: rgb(255, 255, 255);">Tenemos el honor de invitarlos
+          a nuestro enlace nupcial,
+          con la bendicion de Dios y de nuestros Padres:
+        </ion-label>
+  
         <br>
-        <ion-card-content>
-          <br>
-
-          <ion-label class="letraPadres sizeN" style="color: rgb(255, 255, 255);">Rebeca Gutiérrez Pérez</ion-label>
-          <br>
-          <br>
-          <ion-label class="letraPadres sizeN" style="color: rgb(255, 255, 255);">Carlos Rodríguez Sandoval</ion-label>
-          <br>
-          <br>
-          <br>
-        </ion-card-content>
-      </ion-card>
-      <br>
-      <br>
-      <br>
-      <ion-card style="margin: 1vh; width: 40%; --width:100%; "
-        style="background-color: rgba(42, 66, 45, 0.153);border: solid 2px rgb(255, 255, 255);">
         <br>
-        <ion-card-content>
+  
+        <ion-card style="margin: 1vh; width: 40%; --width:100%; "
+          style="background-color: rgba(42, 66, 45, 0.153);border: solid 2px rgb(255, 255, 255);">
           <br>
-
-          <ion-label class="letraPadres sizeN" style="color: rgb(255, 255, 255);">Laura Rocio Gómez Cervantes
-          </ion-label>
+          <ion-card-content>
+            <br>
+  
+            <ion-label class="letraPadres sizeN" style="color: rgb(255, 255, 255);">Rebeca Gutiérrez Pérez</ion-label>
+            <br>
+            <br>
+            <ion-label class="letraPadres sizeN" style="color: rgb(255, 255, 255);">Carlos Rodríguez Sandoval</ion-label>
+            <br>
+            <br>
+            <br>
+          </ion-card-content>
+        </ion-card>
+        <br>
+        <br>
+        <br>
+        <ion-card style="margin: 1vh; width: 40%; --width:100%; "
+          style="background-color: rgba(42, 66, 45, 0.153);border: solid 2px rgb(255, 255, 255);">
           <br>
-          <br>
-          <ion-label class="letraPadres sizeN" style="color: rgb(255, 255, 255);">Gerardo Alfredo Melgoza Barajas
-          </ion-label>
-          <br>
-          <br>
-          <br>
-
-        </ion-card-content>
-      </ion-card>
-    </div>
-  </section>
-
-  <!-- Seccion parallax -->
-  <section class="parallax-bg" style="background-image: url(../../assets/cuentaRegresiva.JPG);"></section>
-  <section class="parallax-content">
-    <div>
-      <div class="sectionClock animate__animated" [ngClass]="{animate__jackInTheBox:flagCuenta}"
-        style="--animate-duration: 1s" *ngIf="flagCuenta">
-        <div class="coming-soon">
-          <div class="time-countdown">
-            <ul>
-              <li class="count-bg-one radius"><span id="days">{{day}}</span>Dias</li>
-              <li class="count-bg-two radius"><span id="hours">{{hours}}</span>Horas</li>
-              <li class="count-bg-three radius"><span id="minutes">{{minutes}}</span>Minutos</li>
-              <li class="count-bg-four radius"><span id="seconds">{{seconds}}</span>Segundos</li>
-            </ul>
+          <ion-card-content>
+            <br>
+  
+            <ion-label class="letraPadres sizeN" style="color: rgb(255, 255, 255);">Laura Rocio Gómez Cervantes
+            </ion-label>
+            <br>
+            <br>
+            <ion-label class="letraPadres sizeN" style="color: rgb(255, 255, 255);">Gerardo Alfredo Melgoza Barajas
+            </ion-label>
+            <br>
+            <br>
+            <br>
+  
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </section>
+  
+    <!-- Seccion parallax -->
+    <section class="parallax-bg" style="background-image: url(../../assets/cuentaRegresiva.JPG);"></section>
+    <section class="parallax-content">
+      <div>
+        <div class="sectionClock animate__animated" [ngClass]="{animate__jackInTheBox:flagCuenta}"
+          style="--animate-duration: 1s" *ngIf="flagCuenta">
+          <div class="coming-soon">
+            <div class="time-countdown">
+              <ul>
+                <li class="count-bg-one radius"><span id="days">{{day}}</span>Dias</li>
+                <li class="count-bg-two radius"><span id="hours">{{hours}}</span>Horas</li>
+                <li class="count-bg-three radius"><span id="minutes">{{minutes}}</span>Minutos</li>
+                <li class="count-bg-four radius"><span id="seconds">{{seconds}}</span>Segundos</li>
+              </ul>
+            </div>
           </div>
         </div>
+        <p></p>
       </div>
-      <p></p>
-    </div>
-  </section>
-  <section class="no-parallax-section bg-1" style=" height: 140vh">
-
-    <div class="no-parallax-content"
-      style="background-image: url(../../assets/lugares.jpg) ; height: 100%; width: 100%; background-size: cover; opacity: 0.8;">
-      <br>
-      <br>
-      <br>
-      <br>
-      <br> <br>
-
-      <ion-label class="cursiva" style="color: black;font-size: xx-large; border-color: solid 2px black;">Itinerario
-      </ion-label>
-      <br>
-      <br>
-
-      <ion-card style="margin: 1vh; "
-        style="background-color: rgba(255, 255, 255, 0);border: solid 2px rgb(170, 156, 145);">
-        <ion-card-header>
-        </ion-card-header>
+    </section>
+    <section class="no-parallax-section bg-1" style=" height: 140vh">
+  
+      <div class="no-parallax-content"
+        style="background-image: url(../../assets/lugares.jpg) ; height: 100%; width: 100%; background-size: cover; opacity: 0.8;">
         <br>
-
-
-        <ion-card-content>
-          <br>
-
-
-          <img src="../../assets/templo.gif" style="color: black;" alt="" width="101" height="77">
-          <br>
-          <ion-label style="color: rgb(0, 0, 0);">Parroquia San Juan Macías</ion-label>
-          <br>
-          <ion-label style="color: rgb(0, 0, 0);">2:00 pm</ion-label>
-          <br>
-
-          <ion-button fill="clear" style="color: rgb(0, 0, 0);" (click)="mapa('parroquia')"> <span>
-              <ion-icon name="location-outline"></ion-icon>
-            </span>Ver mapa</ion-button>
-          <br>
-          <br>
-
-        </ion-card-content>
-      </ion-card>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <ion-card style="margin: 1vh; margin-top: 10vh;"
-        style="background-color: rgba(255, 255, 255, 0);border: solid 2px rgb(170, 156, 145);">
-        <ion-card-header>
-        </ion-card-header>
-
-        <ion-card-content>
-          <br>
-          <br>
-          <br>
-          <img src="../../assets/copas.gif" style="color: black;" alt="" width="101" height="77">
-          <br>
-          <br>
-          <ion-label style="color: rgb(0, 0, 0);"> La Toscana Eventos</ion-label>
-          <br>
-          <ion-label style="color: rgb(0, 0, 0);">6:00 pm</ion-label>
-          <br>
-
-          <ion-button fill="clear" style="color: rgb(0, 0, 0);" (click)="mapa('salon')"> <span>
-              <ion-icon name="location-outline"></ion-icon>
-            </span>Ver mapa</ion-button>
-        </ion-card-content>
-
-
-      </ion-card>
-
-    </div>
-  </section>
-  <section class="parallax-bg" style="background-image: url('./../../assets/drescode.jpg');">
-  </section>
-  <section class="parallax-content" style="height: auto;">
-    <ion-grid>
-      <ion-row>
-        <ion-col size="3">
-          <img src="../../assets/drescodeman.png" alt="" style="height: 100px; width: 90px;">
-        </ion-col>
-        <ion-col size="6" style="margin-top: -14vh;">
-          <h1 class="cursiva" style="color: rgb(0, 0, 0);" (click)="mapa('drive')">Dress Code</h1>
-          <h2 class="nueva" style="color: rgb(0, 0, 0);">Formal</h2>
-        </ion-col>
-        <ion-col size="3">
-          <img src="../../assets/drescodegirl.png" alt="" style="height: 100px; width: 70px;">
-        </ion-col>
-      </ion-row>
-      <ion-row style="margin-top: 1vh;"></ion-row>
-      <ion-row style="margin-top: 10vh;background-color: rgba(0, 0, 0, 0.208);" >
-        <p style="color: rgb(255, 255, 255); margin-left: auto;margin-right: auto;" *ngIf="flagNinios">
-          SOLO ADULTOS NO NIÑOS
-        </p>
-        <p style="color:rgb(255, 255, 255);"  *ngIf="flagNinios">
-          Por cuestiones de seguridad y de logística de nuestra boda no se aceptará el ingreso de niños.
-          Deseamos que esta decisión no les impida asistir a nuestra celebración. </p>
-      </ion-row>
-    </ion-grid>
-
-    <div>
-
-      <div id="countdown"></div>
-    </div>
-  </section>
-  <section class="no-parallax-section bg-1" style="height: 80vh; background-color: white;">
-    <div class="no-parallax-content">
-      <ion-grid>
-        <ion-row>
-          <ion-label class="cursiva" style="margin-left: auto;margin-right: auto;">
-            <h1 class="cursiva" style="color:black;"> Mesa de regalos</h1>
-          </ion-label>
-          <br>
-        </ion-row>
-        <ion-row style="margin-top: 5vh;">
-          <ion-label>
-            <h2 style="color: black;">Tu presencia es nuestro mejor regalo, pero si deseas hacernos un obsequio,
-              te dejamos estas opciones:
-            </h2>
-          </ion-label>
-
-        </ion-row>
-        <ion-row style="margin-top: 5vh;">
-          <ion-col size="1">
-
-          </ion-col>
-          <ion-col size="4" (click)="clickM('a')">
-            <img src="../../assets/amazon-logo.png" alt="" (click)="mapa('amazon')">
-          </ion-col>
-          <ion-col size="2"></ion-col>
-          <ion-col size="4" (click)="clickM('l')">
-            <img src="../../assets/Liverpool-logo.png" alt="" (click)="mapa('liverpool')">
-          </ion-col>
-          <ion-col size="1"></ion-col>
-        </ion-row>
-        <ion-row style="margin-top: 5vh;">
-          <ion-col>
-            <ion-label>
-              <h2 style="color: black;">Quieres dejarnos un mensaje:</h2>
-            </ion-label>
-          </ion-col>
-        </ion-row>
-        <ion-row style="margin-top: 1vh;">
-          <ion-col *ngIf="this.data">
-            <ion-label>
-
-              <ion-item>
-                <textarea style="width: 100%;" [(ngModel)]="this.data.data.mensaje" placeholder="Escríbelo aquí" cols="30"
-                  rows="4"></textarea>
-              </ion-item>
-
-            </ion-label>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-
-    </div>
-  </section>
-  <section class="no-parallax-section bg-1" style="height: 80vh;background-color: rgb(255, 255, 255);">
-    <div class="no-parallax-content">
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-            <ion-label>
-              <h1 class="cursiva" style="color: black;">
-                Moments
-              </h1>
-            </ion-label>
-          </ion-col>
-
-        </ion-row>
-        <ion-row>
-          <ion-col style="margin: 20px; max-width: 35vh; max-width: 35vh;">
-            <swiper-container effect="cards" grab-cursor="true" >
-              <swiper-slide data-swiper-autoplay="20"> <img src="../../assets/f1.jpg" alt=""> </swiper-slide>
-              <swiper-slide data-swiper-autoplay="20"> <img src="../../assets/f2.jpg" alt=""> </swiper-slide>
-              <swiper-slide data-swiper-autoplay="2"> <img src="../../assets/f3.jpg" alt=""> </swiper-slide>
-              <swiper-slide> <img src="../../assets/f4.jpg" alt=""> </swiper-slide>
-              <swiper-slide> <img src="../../assets/f5.jpg" alt=""> </swiper-slide>
-              <swiper-slide> <img src="../../assets/f6.jpg" alt=""> </swiper-slide>
-              <swiper-slide> <img src="../../assets/f7.jpg" alt=""> </swiper-slide>
-              <swiper-slide> <img src="../../assets/f8.jpg" alt=""> </swiper-slide>
-              <swiper-slide> <img src="../../assets/f9.jpg" alt=""> </swiper-slide>
-              <swiper-slide> <img src="../../assets/f10.jpg" alt=""> </swiper-slide>
-              <swiper-slide> <img src="../../assets/f11.jpg" alt=""> </swiper-slide>
-            </swiper-container>
-
-          </ion-col>
-        </ion-row>
-
-      </ion-grid>
-    </div>
-  </section>
-  <section class="no-parallax-section bg-1" style="height: 80vh;">
-    <ion-grid style="height:70vh; width: auto; margin-top: 10vh; margin-left: 5vh; margin-right: 5vh;">
-      <ion-col>
-        <ion-label>
-          <ion-grid>
-            <ion-row>
-              <ion-label class="cursiva" style="margin-left: auto;margin-right: auto;">
-                <h1 class="cursiva" style="color:black;">Confirma tu asistencia</h1>
-              </ion-label>
-            </ion-row>
-          </ion-grid>
+        <br>
+        <br>
+        <br>
+        <br> <br>
+  
+        <ion-label class="cursiva" style="color: black;font-size: xx-large; border-color: solid 2px black;">Itinerario
         </ion-label>
-        <div>
-          <ion-grid>
-            <ion-row>
-              <ion-col>
-                <ion-label>
-                  <br>
-                  <br>
-                  <h3 style=" color: black;">Selecciona a las personas que asistirán al evento:</h3>
-                </ion-label>
-              </ion-col>
-            </ion-row>
-            <ion-row style="margin: 1vh;display: block!important;" *ngIf="this.data">
-              <div style="margin: 1vh; display: block!important;" *ngFor="let value of this.data.data.Invitados">
-                <p></p>
-                <ion-checkbox style="display: block!important;" color="dark" labelPlacement="end" style="color: black;" [(ngModel)]="value.asistencia">
-                  {{value.nombre}}</ion-checkbox>
-                  <p></p>
-          
-              </div>
-            </ion-row>
-          </ion-grid>
-        </div>
-        <ion-button aria-label="Dark toggle" color="dark" (click)="confirmar(data.data.Invitados)">Enviar confirmacion
-        </ion-button>
-
-      </ion-col>
-      <ion-row>
+        <br>
+        <br>
+  
+        <ion-card style="margin: 1vh; "
+          style="background-color: rgba(255, 255, 255, 0);border: solid 2px rgb(170, 156, 145);">
+          <ion-card-header>
+          </ion-card-header>
+          <br>
+  
+  
+          <ion-card-content>
+            <br>
+  
+  
+            <img src="../../assets/templo.gif" style="color: black;" alt="" width="101" height="77">
+            <br>
+            <ion-label style="color: rgb(0, 0, 0);">Parroquia San Juan Macías</ion-label>
+            <br>
+            <ion-label style="color: rgb(0, 0, 0);">2:00 pm</ion-label>
+            <br>
+  
+            <ion-button fill="clear" style="color: rgb(0, 0, 0);" (click)="mapa('parroquia')"> <span>
+                <ion-icon name="location-outline"></ion-icon>
+              </span>Ver mapa</ion-button>
+            <br>
+            <br>
+  
+          </ion-card-content>
+        </ion-card>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <ion-card style="margin: 1vh; margin-top: 10vh;"
+          style="background-color: rgba(255, 255, 255, 0);border: solid 2px rgb(170, 156, 145);">
+          <ion-card-header>
+          </ion-card-header>
+  
+          <ion-card-content>
+            <br>
+            <br>
+            <br>
+            <img src="../../assets/copas.gif" style="color: black;" alt="" width="101" height="77">
+            <br>
+            <br>
+            <ion-label style="color: rgb(0, 0, 0);"> La Toscana Eventos</ion-label>
+            <br>
+            <ion-label style="color: rgb(0, 0, 0);">6:00 pm</ion-label>
+            <br>
+  
+            <ion-button fill="clear" style="color: rgb(0, 0, 0);" (click)="mapa('salon')"> <span>
+                <ion-icon name="location-outline"></ion-icon>
+              </span>Ver mapa</ion-button>
+          </ion-card-content>
+  
+  
+        </ion-card>
+  
+      </div>
+    </section>
+    <section class="parallax-bg" style="background-image: url('./../../assets/drescode.jpg');">
+    </section>
+    <section class="parallax-content" style="height: auto;">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="3">
+            <img src="../../assets/drescodeman.png" alt="" style="height: 100px; width: 90px;">
+          </ion-col>
+          <ion-col size="6" style="margin-top: -14vh;">
+            <h1 class="cursiva" style="color: rgb(0, 0, 0);" (click)="mapa('drive')">Dress Code</h1>
+            <h2  style="color: rgb(0, 0, 0);">Formal</h2>
+          </ion-col>
+          <ion-col size="3">
+            <img src="../../assets/drescodegirl.png" alt="" style="height: 100px; width: 70px;">
+          </ion-col>
+        </ion-row>
+        <ion-row style="margin-top: 1vh;"></ion-row>
+        <ion-row style="margin-top: 10vh;background-color: rgba(0, 0, 0, 0.208);" >
+          <p style="color: rgb(255, 255, 255); margin-left: auto;margin-right: auto;" *ngIf="flagNinios">
+            SOLO ADULTOS NO NIÑOS
+          </p>
+          <p style="color:rgb(255, 255, 255);"  *ngIf="flagNinios">
+            Por cuestiones de seguridad y de logística de nuestra boda no se aceptará el ingreso de niños.
+            Deseamos que esta decisión no les impida asistir a nuestra celebración. </p>
+        </ion-row>
+      </ion-grid>
+  
+      <div>
+  
+        <div id="countdown"></div>
+      </div>
+    </section>
+    <section class="no-parallax-section bg-1" style="height: 80vh; background-color: white;">
+      <div class="no-parallax-content">
+        <ion-grid>
+          <ion-row>
+            <ion-label class="cursiva" style="margin-left: auto;margin-right: auto;">
+              <h1 class="cursiva" style="color:black;"> Mesa de regalos</h1>
+            </ion-label>
+            <br>
+          </ion-row>
+          <ion-row style="margin-top: 5vh;">
+            <ion-label>
+              <h2 style="color: black;">Tu presencia es nuestro mejor regalo, pero si deseas hacernos un obsequio,
+                te dejamos estas opciones:
+              </h2>
+            </ion-label>
+  
+          </ion-row>
+          <ion-row style="margin-top: 5vh;">
+            <ion-col size="1">
+  
+            </ion-col>
+            <ion-col size="4" (click)="clickM('a')">
+              <img src="../../assets/amazon-logo.png" alt="" (click)="mapa('amazon')">
+            </ion-col>
+            <ion-col size="2"></ion-col>
+            <ion-col size="4" (click)="clickM('l')">
+              <img src="../../assets/Liverpool-logo.png" alt="" (click)="mapa('liverpool')">
+            </ion-col>
+            <ion-col size="1"></ion-col>
+          </ion-row>
+          <ion-row style="margin-top: 5vh;">
+            <ion-col>
+              <ion-label>
+                <h2 style="color: black;">Quieres dejarnos un mensaje:</h2>
+              </ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-row style="margin-top: 1vh;">
+            <ion-col *ngIf="this.data">
+              <ion-label>
+  
+                <ion-item>
+                  <textarea style="width: 100%;" [(ngModel)]="this.data.data.mensaje" placeholder="Escríbelo aquí" cols="30"
+                    rows="4"></textarea>
+                </ion-item>
+  
+              </ion-label>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+  
+      </div>
+    </section>
+    <section class="no-parallax-section bg-1" style="height: 80vh;background-color: rgb(255, 255, 255);">
+      <div class="no-parallax-content">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-label>
+                <h1 class="cursiva" style="color: black;">
+                  Moments
+                </h1>
+              </ion-label>
+            </ion-col>
+  
+          </ion-row>
+          <ion-row>
+            <ion-col style="margin: 20px; max-width: 35vh; max-width: 35vh;">
+              <swiper-container effect="cards" grab-cursor="true" >
+                <swiper-slide data-swiper-autoplay="20"> <img src="../../assets/f1.jpg" alt=""> </swiper-slide>
+                <swiper-slide data-swiper-autoplay="20"> <img src="../../assets/f2.jpg" alt=""> </swiper-slide>
+                <swiper-slide data-swiper-autoplay="2"> <img src="../../assets/f3.jpg" alt=""> </swiper-slide>
+                <swiper-slide> <img src="../../assets/f4.jpg" alt=""> </swiper-slide>
+                <swiper-slide> <img src="../../assets/f5.jpg" alt=""> </swiper-slide>
+                <swiper-slide> <img src="../../assets/f6.jpg" alt=""> </swiper-slide>
+                <swiper-slide> <img src="../../assets/f7.jpg" alt=""> </swiper-slide>
+                <swiper-slide> <img src="../../assets/f8.jpg" alt=""> </swiper-slide>
+                <swiper-slide> <img src="../../assets/f9.jpg" alt=""> </swiper-slide>
+                <swiper-slide> <img src="../../assets/f10.jpg" alt=""> </swiper-slide>
+                <swiper-slide> <img src="../../assets/f11.jpg" alt=""> </swiper-slide>
+              </swiper-container>
+  
+            </ion-col>
+          </ion-row>
+  
+        </ion-grid>
+      </div>
+    </section>
+    <section class="no-parallax-section bg-1" style="height: 80vh;">
+      <ion-grid style="height:70vh; width: auto; margin-top: 10vh; margin-left: 5vh; margin-right: 5vh;">
         <ion-col>
-          <br>
-          <br>
           <ion-label>
-            <h2 style="color: black;">Recuerda confirmar tu asistencia antes del 29 de octubre,
-              para que podamos reservar un lugar para ti en el evento. Gracias!</h2>
+            <ion-grid>
+              <ion-row>
+                <ion-label class="cursiva" style="margin-left: auto;margin-right: auto;">
+                  <h1 class="cursiva" style="color:black;">Confirma tu asistencia</h1>
+                </ion-label>
+              </ion-row>
+            </ion-grid>
           </ion-label>
+          <div>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <ion-label>
+                    <br>
+                    <br>
+                   <h3 style=" color: black;" *ngIf="!vencida">Selecciona a las personas que asistirán al evento:</h3> 
+                    <h3 style=" color: black;" *ngIf="vencida">Gracias por confirmar la asistencia de:</h3>
+                  </ion-label>
+                </ion-col>
+              </ion-row>
+              <ion-row style="margin: 1vh;display: block!important;" *ngIf="this.data">
+                <div style="margin: 1vh; display: block!important;" *ngFor="let value of this.data.data.Invitados">
+                  <p></p>
+                  <ion-checkbox [disabled]="vencida" style="display: block!important;" color="dark" labelPlacement="end" style="color: black;" [(ngModel)]="value.asistencia">
+                    {{value.nombre}}</ion-checkbox>
+                    <p></p>
+            
+                </div>
+              </ion-row>
+            </ion-grid>
+          </div>
+           <ion-button aria-label="Dark toggle" color="dark" (click)="confirmar(data.data.Invitados)" *ngIf="!vencida">Enviar confirmacion
+          </ion-button> 
+  
         </ion-col>
-      </ion-row>
-    </ion-grid>
+        <ion-row>
+          <ion-col>
+            <br>
+            <br>
+            <ion-label>
+               <h2 style="color: black;"  *ngIf="!vencida">Recuerda confirmar tu asistencia antes del domingo 5 de noviembre,
+                para que podamos reservar un lugar para ti en el evento. Gracias!</h2> 
+            </ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+  
+    </section>
+  </div>
+  </div>
+  <div class=" "  *ngIf="flagDelay">
+    <swiper-container effect="cards" grab-cursor="true">
+      <swiper-slide data-swiper-autoplay="20"> <img src="../../assets/f1.jpg" alt=""> </swiper-slide>
+      <swiper-slide data-swiper-autoplay="20"> <img src="../../assets/f2.jpg" alt=""> </swiper-slide>
+      <swiper-slide data-swiper-autoplay="2"> <img src="../../assets/f3.jpg" alt=""> </swiper-slide>
+      <swiper-slide> <img src="../../assets/f4.jpg" alt=""> </swiper-slide>
+      <swiper-slide> <img src="../../assets/f5.jpg" alt=""> </swiper-slide>
+      <swiper-slide> <img src="../../assets/f6.jpg" alt=""> </swiper-slide>
+      <swiper-slide> <img src="../../assets/f7.jpg" alt=""> </swiper-slide>
+      <swiper-slide> <img src="../../assets/f8.jpg" alt=""> </swiper-slide>
+      <swiper-slide> <img src="../../assets/f9.jpg" alt=""> </swiper-slide>
+      <swiper-slide> <img src="../../assets/f10.jpg" alt=""> </swiper-slide>
+      <swiper-slide> <img src="../../assets/f11.jpg" alt=""> </swiper-slide>
+    </swiper-container>
+  
+  </div>
 
-  </section>
-</div>
-<div class=" "  *ngIf="flagDelay">
-  <swiper-container effect="cards" grab-cursor="true">
-    <swiper-slide data-swiper-autoplay="20"> <img src="../../assets/f1.jpg" alt=""> </swiper-slide>
-    <swiper-slide data-swiper-autoplay="20"> <img src="../../assets/f2.jpg" alt=""> </swiper-slide>
-    <swiper-slide data-swiper-autoplay="2"> <img src="../../assets/f3.jpg" alt=""> </swiper-slide>
-    <swiper-slide> <img src="../../assets/f4.jpg" alt=""> </swiper-slide>
-    <swiper-slide> <img src="../../assets/f5.jpg" alt=""> </swiper-slide>
-    <swiper-slide> <img src="../../assets/f6.jpg" alt=""> </swiper-slide>
-    <swiper-slide> <img src="../../assets/f7.jpg" alt=""> </swiper-slide>
-    <swiper-slide> <img src="../../assets/f8.jpg" alt=""> </swiper-slide>
-    <swiper-slide> <img src="../../assets/f9.jpg" alt=""> </swiper-slide>
-    <swiper-slide> <img src="../../assets/f10.jpg" alt=""> </swiper-slide>
-    <swiper-slide> <img src="../../assets/f11.jpg" alt=""> </swiper-slide>
-  </swiper-container>
-
-</div>

@@ -25,6 +25,7 @@ export class HomePage {
   flagPadres = false;
   flagCuenta = false;
   flagDelay = false;
+  flagIniciar = false;
   _minute = this._second * 60;
   _hour = this._minute * 60;
   _day = this._hour * 24;
@@ -40,6 +41,8 @@ export class HomePage {
   flagPlay = false;
   flagFirst = false;
   flagNinios = true;
+  musica = true;
+  vencida = true;
   audio = new Audio;
   currentPhoto = " ../../assets/fotocolor.JPG"
 
@@ -52,8 +55,11 @@ export class HomePage {
         }
       } else {
         if (!this.flagPlay) {
-          this.audio.play();
-          this.flagPlay = true;
+          if(this.musica && this.flagFirst){
+            this.audio.play();
+            this.flagPlay = true;
+          }
+    
         }
 
       }
@@ -61,7 +67,7 @@ export class HomePage {
   }
 
   conlog() {
-    console.log('si ahuevo')
+    //console.log('si ahuevo')
   }
   ngAfterViewInit(): void {
     var elem = document.getElementById('divMaster');
@@ -69,19 +75,20 @@ export class HomePage {
     this.muestraDiv(elem)
   }
   muestraDiv(elem: any) {
-    console.log(elem)
+    // console.log(elem)
   }
-  async clickM(cual:any){
-    if(cual == 'a'){
-      this.data.data.numeroClicksA = Number(this.data.data.numeroClicksA)+1;
-      await this.firebase.update(this.data.data,this.id)
-    }else{
-      this.data.data.numeroClicksL = Number(this.data.data.numeroClicksL)+1;
-    await this.firebase.update(this.data.data,this.id)
+  async clickM(cual: any) {
+    if (cual == 'a') {
+      this.data.data.numeroClicksA = Number(this.data.data.numeroClicksA) + 1;
+      await this.firebase.update(this.data.data, this.id)
+    } else {
+      this.data.data.numeroClicksL = Number(this.data.data.numeroClicksL) + 1;
+      await this.firebase.update(this.data.data, this.id)
     }
   }
   async iniciar() {
-    if(screen.width>700){
+
+    if (screen.width > 700) {
       const alert = await this.alertController.create({
         header: 'Gracias por entrar te recomendamos ver la invitacion en un celular para mejor experiencia gracias',
         subHeader: 'de antemano gracias',
@@ -94,11 +101,13 @@ export class HomePage {
     // this.data = JSON.parse(this.data)
     if (!this.data) {
       this.data = await this.firebase.findOne(this.id);
+
       if (!this.data.data) {
         this.data = undefined;
       }
       if (!this.data) {
         this.flagDelay = true;
+        this.flagIniciar = true;
         let a: AlertOptions;
         const alert = await this.alertController.create({
           header: 'Creo qe paso un error comunicate con los novios',
@@ -109,7 +118,13 @@ export class HomePage {
         await alert.present();
 
       } else {
-        this.data.data.numeroAperturas = Number(this.data.data.numeroAperturas)+1;
+        this.data.data.numeroAperturas = Number(this.data.data.numeroAperturas) + 1;
+        if (this.data.data.hasOwnProperty('musica')) {
+          this.musica = this.data.data.musica;
+        }
+        if (this.data.data.hasOwnProperty('vencida')) {
+          this.vencida = this.data.data.vencida;
+        }
         await this.firebase.update(this.data.data, this.id)
         if (this.data.data.hasOwnProperty('noNinios')) {
           this.flagNinios = false;
@@ -120,11 +135,11 @@ export class HomePage {
 
   }
   ngOnChanges(cambios: ChangeDetectionStrategy): void {
-    console.log(cambios)
 
   }
   async ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
+    this.audio.src = '../assets/cancion.mp3';
     if (!this.id) {
       return;
     } else {
@@ -134,12 +149,12 @@ export class HomePage {
   clockStart() {
     this.clock = this.source.subscribe(t => {
       this.now = new Date();
-      this.end = new Date('12/02/' + (this.now.getFullYear()) + ' 00:00');
+      this.end = new Date('12/02/' + (this.now.getFullYear()) + ' 14:00');
       this.showDate();
     });
   }
   async confirmar(invitados: any) {
-    console.log(invitados)
+    //console.log(invitados)
     let asistencia = "";
     this.data.data.numeroAperturas = Number(this.data.data.numeroAperturas) + 1;
     for (let item of invitados) {
@@ -157,27 +172,29 @@ export class HomePage {
   }
   setData(evento: any, value: any) {
     value = evento.detail.checked;
-    console.log(evento)
+    //console.log(evento)
   }
   onContentScroll(evento: any) {
     let scrollOffset = evento.srcElement.scrollTop;
-    if (!this.flagPlay) {
-      if (!this.flagFirst) {
-        this.flagFirst = true;
-        this.playAudio();
-      }
 
-    }
     // console.log("scroll: ", scrollOffset);
     if (scrollOffset > 300) {
 
       this.flagPadres = true;
+      if (!this.flagPlay) {
+        if (!this.flagFirst) {
+          this.flagFirst = true;
+          this.playAudio();
+        }
+
+      }
     }
     if (scrollOffset > 1100) {
       this.flagCuenta = true;
     }
     if (scrollOffset > 1200) {
       this.flagPadres = false;
+   
     }
   }
   showDate() {
@@ -189,7 +206,7 @@ export class HomePage {
   }
   async presentAlert(datos: any) {
     let a: AlertOptions;
-    console.log(datos)
+    // console.log(datos)
     const alert = await this.alertController.create({
       header: 'Bienvenido a la invitacion de Leslie y Gerardo',
       subHeader: datos.data.hasOwnProperty('frase') ? datos.data.frase : 'Leslie estas cordealmente invitado',
@@ -199,6 +216,7 @@ export class HomePage {
     });
 
     await alert.present();
+    this.flagIniciar = true;
   }
 
   setOpen(isOpen: boolean) {
@@ -209,17 +227,23 @@ export class HomePage {
       this.flagPlay = false;
       this.audio.pause();
     } else {
-      this.flagPlay = true;
-      this.audio.play();
+      if(this.musica){
+        this.flagPlay = true;
+        this.audio.play();
+      }
+   
     }
   }
   playAudio() {
 
-    this.audio.src = '../assets/cancion.mp3';
+ 
     this.audio.volume = 0.50;
     this.audio.load();
-    this.audio.play();
-    this.flagPlay = true;
+    if(this.musica){
+      this.audio.play();
+      this.flagPlay = true;
+    }
+   
     localStorage.setItem('activo', 'true')
 
 

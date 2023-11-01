@@ -25,12 +25,14 @@ export class TfkadminPage implements OnInit {
       Invitados: this.invitados,
       numeroInvitados: this.invitados.length,
       mensaje: '',
+      vencida: false,
+      musica: true,
   
 }
 if(this.ninios){
   data.noNinios = true;
 }
-console.log(data)
+//console.log(data)
     this.firebase.setdata(data)
     this.fraseInvitacion = "";
     this.invitacion = "";
